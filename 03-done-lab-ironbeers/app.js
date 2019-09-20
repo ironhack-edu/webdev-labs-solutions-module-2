@@ -46,6 +46,4 @@ app.get("/random-beer", (req, res, next) => {
   .catch(error => console.log(error));
 });
 
-
-
-app.listen(3000);
+app.listen(3000, () => console.log("App is running on port 3000 🎯"));
