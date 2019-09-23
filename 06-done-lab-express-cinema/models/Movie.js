@@ -17,4 +17,9 @@ const movieSchema = new Schema({
 
 const Movie = mongoose.model("Movie", movieSchema);
 
+// every movie will be saved in the "movies" collection in the database:
+
+// model: Movie (capitalized)
+// collection: movies (lowercase)
+
 module.exports = Movie;
