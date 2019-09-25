@@ -10,4 +10,10 @@ const celebritySchema = new Schema({
   timestamps: true
 })
 const Celebrity = mongoose.model("Celebrity", celebritySchema );
+
+// every celebrity will be saved in the "celebrities" collection in the database:
+
+// model: Celebrity (capitalized)
+// collection: celebrities (lowercase)
+
 module.exports = Celebrity;
