@@ -18,7 +18,7 @@
     "express-session": "^1.15.0",
     "hbs": "^4.0.1",
     "mongodb": "^2.2.22",
-    "mongoose": "^4.8.1",
+    "mongoose": "^5.7.8",
     "morgan": "~1.7.0",
     "passport": "^0.3.2",
     "passport-local": "^1.0.0",
