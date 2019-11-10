@@ -20,7 +20,7 @@ class SortedList {
     // if the array is empty (!this.length)
     // or we are trying to get some element on the position that exceeds the number of elements in the array
     // throw an error
-    if (!this.length || position > this.length) {
+    if (this.length === 0 || position > this.length) {
       throw new Error('OutOfBounds');
     }
 
@@ -29,8 +29,8 @@ class SortedList {
   }
 
   max() {
-    // if the array is empty (!this.length)
-    if (!this.length) {
+    // if the array is empty (this.length === 0 )
+    if (this.length === 0) {
       // throw an error
       throw new Error('EmptySortedList');
     }
@@ -42,8 +42,8 @@ class SortedList {
   }
 
   min() {
-    // if the array is empty (!this.length)
-    if (!this.length) {
+    // if the array is empty (this.length === 0 )
+    if (this.length === 0) {
       // throw an error
       throw new Error('EmptySortedList');
     }
@@ -53,8 +53,8 @@ class SortedList {
   }
 
   sum() {
-    // if the array is empty (!this.length)
-    if (!this.length) {
+    // if the array is empty (this.length === 0 )
+    if (this.length === 0) {
       // sum of the array will be equal to zero
       return 0;
     }
@@ -63,7 +63,7 @@ class SortedList {
   }
 
   average() {
-    if (!this.length) {
+    if (this.length === 0) {
       throw newError('EmptySortedList');
     }
     // we get average simple as dividing sum with the number of elements in the array (which is the length of the array)
