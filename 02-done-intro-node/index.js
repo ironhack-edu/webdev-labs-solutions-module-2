@@ -3,6 +3,7 @@ class SortedList {
     // we have to use keyword "this" to point out that these are the properties of the SortedList class
     // items should be an array
     this.items = [];
+
     // length should be the number of elements in the array
     this.length = this.items.length;
   }
@@ -10,8 +11,10 @@ class SortedList {
   add(item) {
     // use .push() to add element to the array
     this.items.push(item);
+
     // add +1 on the length of the array
     this.length++;
+
     // sorting array is not necessity but will help us in the later steps
     this.items.sort((a, b) => a - b);
   }
@@ -34,7 +37,8 @@ class SortedList {
       // throw an error
       throw new Error('EmptySortedList');
     }
-    // since we work with sorted array, we can simply point the last element of the array as the highest value of the array
+
+    // since we work with a sorted array, we can simply point the last element of the array as the highest value of the array
     return this.items[this.length - 1];
 
     // you can use some more fancy ways as well
