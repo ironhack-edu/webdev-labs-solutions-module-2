@@ -72,7 +72,7 @@ class SortedList {
 
   average() {
     if (this.length === 0) {
-      throw newError('EmptySortedList');
+      throw new Error('EmptySortedList');
     }
     // we get average simple as dividing sum with the number of elements in the array (which is the length of the array)
     return this.sum() / this.length;
