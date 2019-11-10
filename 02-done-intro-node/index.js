@@ -11,31 +11,31 @@ class SortedList {
     // use .push() to add element to the array
     this.items.push(item);
     // add +1 on the length of the array
-    this.length ++;
+    this.length++;
     // sorting array is not necessity but will help us in the later steps
     this.items.sort((a, b) => a - b);
   }
 
-  get(pos) {
-    // if the array is empty (!this.length) 
+  get(position) {
+    // if the array is empty (!this.length)
     // or we are trying to get some element on the position that exceeds the number of elements in the array
     // throw an error
-    if(!this.length || pos > this.length){
-      throw new Error("OutOfBounds");
+    if (!this.length || position > this.length) {
+      throw new Error('OutOfBounds');
     }
 
     // if all is good, return the element in the asked position
-    return this.items[pos];
+    return this.items[position];
   }
 
   max() {
     // if the array is empty (!this.length)
-    if(!this.length){
+    if (!this.length) {
       // throw an error
-      throw new Error ("EmptySortedList");
+      throw new Error('EmptySortedList');
     }
     // since we work with sorted array, we can simply point the last element of the array as the highest value of the array
-    return this.items[this.length-1];
+    return this.items[this.length - 1];
 
     // you can use some more fancy ways as well
     // return Math.max(...this.items);
@@ -43,9 +43,9 @@ class SortedList {
 
   min() {
     // if the array is empty (!this.length)
-    if(!this.length){
+    if (!this.length) {
       // throw an error
-      throw new Error ("EmptySortedList");
+      throw new Error('EmptySortedList');
     }
 
     // since we work with sorted array, we can simply point the first element of the array as the lowest value of the array
@@ -54,20 +54,20 @@ class SortedList {
 
   sum() {
     // if the array is empty (!this.length)
-    if(!this.length){
+    if (!this.length) {
       // sum of the array will be equal to zero
       return 0;
     }
     // using .reduce() array method, we can calculate the sum of the array
-    return this.items.reduce((total, currentValue ) => total + currentValue );
+    return this.items.reduce((total, currentValue) => total + currentValue);
   }
 
   average() {
-    if(!this.length){
-      throw newError ("EmptySortedList");
+    if (!this.length) {
+      throw newError('EmptySortedList');
     }
     // we get average simple as dividing sum with the number of elements in the array (which is the length of the array)
-    return this.sum()/this.length;
+    return this.sum() / this.length;
   }
 }
 
