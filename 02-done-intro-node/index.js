@@ -59,7 +59,11 @@ class SortedList {
       return 0;
     }
     // using .reduce() array method, we can calculate the sum of the array
-    return this.items.reduce((total, currentValue) => total + currentValue);
+    return this.items.reduce((total, currentValue) => {
+      const updatedTotal = total + currentValue;
+
+      return updatedTotal;
+    });
   }
 
   average() {
