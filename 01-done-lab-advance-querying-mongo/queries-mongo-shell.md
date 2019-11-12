@@ -160,11 +160,8 @@ db.companies.find({$and: [ {founded_year: {$lte: 2000}}, {"acquisition.price_amo
 
 
 
-#### No companies were acquired after 2105
-
 ```js
 db.companies.find({"acquisition.acquired_year": {$gt: 2010}},{name: 1, acquisition: 1}).sort({"acquisition.price_amount": 1})
-
 ```
 
 
