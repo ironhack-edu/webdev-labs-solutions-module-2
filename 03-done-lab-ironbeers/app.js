@@ -27,7 +27,7 @@ app.get("/beers", (req, res, next) => {
     // console.log("Response is:",  responseFromDB);
     // allBeers is the hbs file that's gonna be rendered, it comes from "views" folder
                         // "beers" is the name of a variable we will use in hbs file 
-    res.render("allBeers.hbs", { beers: responseFromDB });
+    res.render("allBeers", { beers: responseFromDB });
   })
   .catch(error => console.log(error));
 });
