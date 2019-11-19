@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>{{title}}</title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+    <h1>{{title}}</h1>
+    <form action = "/celebrities/{{ celebrity._id }}" method = "POST" >
+      <div>
+        <label for = "name"> Name </label>
+        <input type = "text" name = "name" id = "name" value="{{ celebrity.name }}">
+      </div>
+      <div>
+        <label for = "occupation"> Occupation </label>
+        <input type = "text" name = "occupation" id = "occupation" value="{{ celebrity.occupation }}">
+      </div>
+      <div>
+        <label for = "catchPhrase"> Catch Phrase </label>
+        <input type = "text" name = "catchPhrase" id = "catchPhrase" value="{{ celebrity.catchPhrase }}">
+      </div>
+      <button> Submit </button>
+    </form>
+
+
+
+    <a href = "/celebrities">
+      Back to Celebrity Inventory
+    </a>
+  </body>
+</html>

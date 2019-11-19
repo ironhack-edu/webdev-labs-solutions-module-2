@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>{{title}}</title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+    <h1>{{title}}</h1>
+    <ul>
+      {{#each movies}}
+        <li>
+          <a href="/movies/{{ this._id }}">
+            {{ this.title }}
+          </a>
+          - {{ this.genre }}
+          <a href="/movies/{{ this._id }}/edit">
+            Edit
+          </a>
+          <form action="/movies/{{ this._id }}/delete" method="GET">
+            <button> Delete </button>
+          </form>
+        </li>
+      {{/each}}
+    </ul>
+
+    <a href = "/movies/new">
+      Click here to add a new movie
+    </a>
+  </body>
+</html>
