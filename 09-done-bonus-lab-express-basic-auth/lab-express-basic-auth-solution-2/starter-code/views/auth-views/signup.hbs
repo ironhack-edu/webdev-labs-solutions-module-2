@@ -1,0 +1,38 @@
+<div id="form-container">
+  <form action="/auth/signup" method="POST">
+    <h2>Signup</h2>
+
+    <label for="username">Username</label><br>
+    <input 
+      class="txt"
+      type="text" 
+      name="username"
+      placeholder="Your username" 
+{{!--       minlength="4" 
+      maxlength="15" --}}
+      required
+    >
+    <br><br>
+
+    <label for="password">Password</label><br>
+    <input
+      class="txt"
+      type="password"
+      name="password"
+      placeholder="Your password"
+{{!--       minlength="8" 
+      maxlength="25" --}}
+      required
+    ><br><br>
+
+    {{#if errorMessage}}
+      <div class="error-message">{{ errorMessage }}</div>
+    {{/if}}
+
+    <button class="btn">Create account</button>
+
+    <p>
+      Already have an account? <a href="/login">Login</a>
+    </p>
+  </form>
+</div>

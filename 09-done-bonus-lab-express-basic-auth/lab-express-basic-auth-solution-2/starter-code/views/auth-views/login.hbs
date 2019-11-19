@@ -1,0 +1,47 @@
+<div id="form-container">
+  <form action="/auth/login" method="POST">
+    <h2>Login</h2>
+
+    <label for="username">Username</label><br>
+    <input 
+      class="txt"
+      type="text" 
+      name="username"
+      placeholder="Your username" 
+{{!--       minlength="4" 
+      maxlength="15" --}}
+      required
+    >
+    <br><br>
+
+    <label for="password">Password</label><br>
+    <input
+      class="txt"
+      id="password"
+      type="password"
+      name="password"
+      placeholder="Your password"
+{{!--       minlength="8" 
+      maxlength="25" --}}
+      required
+    ><br><br>
+
+    {{#if errorMessage}}
+      <div class="error-message">{{ errorMessage }}</div>
+    {{/if}}
+
+    <button class="btn">Login</button>
+
+    <p>
+      Don't have an account? <a href="/signup">Sign up</a>
+    </p>
+  </form>
+</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="/javascript/strength-password/strength.js"></script>
+<script>
+  $(document).ready(function () {
+    $("#password").strength();
+  });
+</script>

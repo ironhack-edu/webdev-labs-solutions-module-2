@@ -1,0 +1,63 @@
+body {
+  padding: 50px;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
+a {
+  color: #00B7FF;
+}
+
+.form-page {
+  background: #eee;
+}
+
+#form-container {
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 12px;
+  box-sizing: border-box;
+  font-size: 14px;
+  margin: 0 auto;
+  padding: 10px;
+  text-align: center;
+  width: 400px;
+}
+
+#form-container .txt,
+input.strength {
+  box-sizing: border-box;
+  font-size: 14px;
+  margin: 5px 0 15px;
+  padding: 10px 5px;
+  width: 100%;
+}
+
+#form-container .btn {
+  background: #fff;
+  border: 1px solid #333;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 14px;
+  padding: 8px 30px;
+}
+
+.error-message {
+  background: #F02B63;
+  box-sizing: border-box;
+  color: #fff;
+  margin-bottom: 20px;
+  padding: 20px;
+  width: 100%;
+}
+
+/* Strength measurement styles */
+.strength_meter {
+  height: 40px;
+  margin-top: 15px;
+  width: 100%;
+}
+
+.strength_meter div {
+  height: 100%;
+  line-height: 40px;
+}
