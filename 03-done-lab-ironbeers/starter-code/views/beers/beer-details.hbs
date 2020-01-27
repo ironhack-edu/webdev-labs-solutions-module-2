@@ -1,0 +1,20 @@
+<div>
+    {{#each beers}}
+        <div class="beer">
+            {{>beerpartial this}}
+            <div class="beer-inner">
+                <p>First brewed: {{this.first_brewed}}</p>
+                <p>Attenuation level: {{this.attenuation_level}}</p>
+                <p>Recommended food pairing:</p>
+                <ul>
+                    {{#each this.food_pairing}}
+                        <li> {{this}}</li>
+                    {{/each}}
+                </ul>
+            </div>
+        </div>
+    {{/each}}
+    <div class="buttons">
+        <a class="btn btn-primary button-margin" href="/beers">Go back to beers list</a>
+    </div>
+</div>

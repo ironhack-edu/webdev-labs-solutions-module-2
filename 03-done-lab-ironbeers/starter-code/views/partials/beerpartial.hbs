@@ -1,0 +1,13 @@
+{{#if this.image_url}}
+    <img src="{{ this.image_url }}" alt="{{ this.tagline }}" class="align-self-center mr-3" />
+{{/if}}
+<div class="beer-inner">
+    <h3 class="mt-0">
+        <a href="/beers/{{this.id}}"> {{!-- we have to create this route "/beers/{{someBeerId}" --}}
+            {{this.name}}
+        </a>
+    </h3>
+
+    <h5>{{this.tagline}}</h5>
+    <p>{{this.description}}</p>
+</div>

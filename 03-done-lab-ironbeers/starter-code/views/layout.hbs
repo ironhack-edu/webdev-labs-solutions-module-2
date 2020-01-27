@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>IronBeers review</title>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+            integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+        <link rel="stylesheet" href="/stylesheets/styles.css">
+    </head>
+
+    <body>
+
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                <div class="navbar-nav">
+                    <a class="nav-item nav-link" href="/"> {{!-- / ===> localhost:3000 --}}
+                        Home
+                    </a>
+                    <a class="nav-item nav-link" href="/beers"> {{!-- /beers ===> localhost:3000/beers --}}
+                        Beers
+                    </a>
+                    <a class="nav-item nav-link" href="/random-beer">
+                        {{!-- /random-beer ===> localhost:3000/random-beer --}}
+                        Random Beer
+                    </a>
+                </div>
+            </div>
+        </nav>
+
+
+
+        {{!-- any page we want to render will be "plugged in" here --}}
+        {{!-- this is the only page that will have full html setup --}}
+        {{!-- if there's anything you want to have on each page, it will come from here
+    ex. navbar, header, footer, etc --}}
+
+        {{{ body }}}
+
+        <footer id="footer" class="navbar navbar-expand-lg navbar-dark">
+            <div id="footer-div">
+                <p>Developed with ♥️ by Ironhack</p>
+            </div>
+        </footer>
+    </body>
+
+</html>
