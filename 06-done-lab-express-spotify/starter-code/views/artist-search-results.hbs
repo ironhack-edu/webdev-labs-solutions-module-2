@@ -1,0 +1,15 @@
+<ul>
+    {{#each artists}}
+        <li>{{ this.name }}
+            <br>
+            {{#if this.images}}
+                <img src="{{this.images.2.url}}" alt="{{this.name}}">
+            {{else}}
+                <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMgAAADICAMAAACahl6sAAAAM1BMVEX////W1ta1tbX8/Pz19fXq6urb29vl5eXg4ODt7e3w8PDU1NS+vr7Ozs7GxsbCwsLKysr5bZ2cAAAFA0lEQVR4nO2d26KrIAxEK2rrvf3/rz3FW0VREdJOsg/reT8wO5kkINrbLRKJRCKRSCQikTSr8g9ZlqIX5EFWPopky/2RS5KT5XeLiJmiFKElLQ9VjFoq9DLPSPNzFUOS8ZZSOcropWTo1e6SPi7oeJMz9UrmYA6TgmVQrqTVDEMlXjqShJ3nPXWwi0nmq4OZkvSyzz8UnGrXxbpr8kCv/kMZooOR4dMwHcmdS3IFJZYmRysYCA3IGx4hCQ4Ik5AQBIRHSAgCkiQlWgVRQJI7WkZwD5nADyq2wxIP4HYPmBYN4LnlethwCjq3iDILXrdoapamwArx3hhuwQoh6YYDWJME7AzXQE1CZxHwRpHQIli3k3URDVIIWRfRIEd5Sh3IskXpdWjZopoYB4ADMNFeZARYf0mLFrL+Eg4oWCGk1RfZSGh1RCHshMBaO20bAbb2KISbENrGDhRC29ijkCjk7wmhnRmBQohnxigkColC/hchsDGeWghKRxTCTgh1Z4cJIZ61cOdaUYgd3Nkv8Z4ddxpPLAT3fIT2OQ/yiRWtEOAzRNqOiNNB2xGRz9lJ6y/y5gPlxQfoZUDSsgW9HUQpBHqHmdDt2NuZhOfx2NdhCIcU8NswdDfowNf8yUyCvsBM1kngV8qphMBfGKPKLbQOqtxi8C4ijRD0Ff8b0QSMrlkaksERXrM0FHbn8NIbxZjCwOqa8J07A6trgisw+B2YD6GTI5OABIeEiUM0YS5hUbIGggoXix4yERISRgEJau8M3pte4j1xsSm9I94hYVN6JzxLMCunD3jNjmw+JLLAK7nYJZbGI7kYJpbmcuXiVrFmLg6PNaMhyyStL+lo8GdAO2T1FSWN6tAL3qNMWnclT6UUw+Lb824lT1clWofiapL3+trGSUnd61AtesV2+l1Jp1oHHY0a4JlbQx9p1OtMR6smeObW+N9W6ji9xrTqeaHXbGMaUfT/+8DzL7WE47B1N5Zql1KbMpRi2BMXM+OQO82rXat4qjUNO7sb386cF9x0Xdvz6ppmo0LD4YGCgTH61vZFW2EWktXJVr1Noj1q9NINth9ldVfC6jzIckDXuQrh5HfrwUN7rmGAz8S1c4DibHkmlevgI+vr9rcHi817enSA7VS9mhZ/geP8icKZlKbrZxm0EpefUqi7Xa80z3mKwQ70rmdyrU3LahYDftW/unKOVbfde9zq9TTN8z2Bbf8E81MLTj8zcpXq11LSivo9sYlfRuV7KnqK/BdmSauc+uVDG9/9SaIfiZi4F3lFL+fHIhYUeUkmJ0OJmNE/fxWq4rvOvsIjoDhnbFQMPPykVOiMsuAh5dIA8kMubvEzhtEYuRQU6o/pkOI+Jx9u+jjgqIRxWk04KaH+INtXcPAJ8SvRX+L8N6PY+2PkdI/PrJfvc3LuQv2hv+9xfNVLhkEGDu9ICTHIwEFIRFTemQO/M50T99gNCel79j9gNyTCArIbElkO0ezsTcT0whn7oy5JPWTCOgWz3kztYG2K4qye2HNLntU1ltySmFnW3JKYWbZb6RJrlmbTE+VsREw2+yt53XBgM2+hF+TLugDLLL6alUlkFl/NyiSi9rgGq06CXo4/ZieRa5HVp2GkdhGNMW5J7SIaY5so1+tmS5Q6aPUs3S7Z64bb5bZDzcLtkr1uuB29lDA+bhft9aXbpZ35rvkjXl+4XXI71JR/wyIft8tuh8m43f0H98FYb3fcoL4AAAAASUVORK5CYII="
+                    alt="{{this.name}}" style="width: 160px">
+            {{/if}}
+            <br>
+            {{!-- app.get('/albums/:artistId'....) --}}
+            <a href="/albums/{{this.id}}">View albums</a> </li>
+    {{/each}}
+</ul>
