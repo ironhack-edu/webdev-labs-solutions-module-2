@@ -18,5 +18,5 @@ const recipeSchema = new Schema({
 const Recipe = mongoose.model('Recipe', recipeSchema);
 module.exports = Recipe;
 
-// lines 16 and 17 could be done in one line: 
+// lines 18 and 19 could be done in one line: 
 // module.exports = mongoose.model('Recipe', recipeSchema);
