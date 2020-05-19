@@ -5,15 +5,53 @@
 //   addFood(steak[i], '#steak');
 // }
 
-// // Iteration 1 using callbacks - Try to streamline with recursion
-// addFood(steak[0], '#steak', () => {
-//   // ... your code here
+// ****************** Iteration 1 using callbacks ******************
+
+// addFood(steak[0], '#steak', function () {
+//   addFood(steak[1], '#steak', function () {
+//     addFood(steak[2], '#steak', function () {
+//       addFood(steak[3], '#steak', function () {
+//         addFood(steak[4], '#steak', function () {
+//           addFood(steak[5], '#steak', function () {
+//             addFood(steak[6], '#steak', function () {
+//               addFood(steak[7], '#steak');
+//               document.querySelector('#table').innerHTML += `<img src="public/images/steak.jpg"/>`;
+//             });
+//           });
+//         });
+//       });
+//     });
+//   });
 // });
 
-// // Iteration 2 using then - Try to streamline with recursion
+// ****************** Iteration 2 using `.then()` ******************
+
 // addFood(mashPotatoes[0], '#mashPotatoes').then(res => {
-//   // ... your code here
+//   addFood(mashPotatoes[1], '#mashPotatoes').then(res => {
+//     addFood(mashPotatoes[2], '#mashPotatoes').then(res => {
+//       addFood(mashPotatoes[3], '#mashPotatoes').then(res => {
+//         addFood(mashPotatoes[4], '#mashPotatoes');
+//         document.querySelector('#table').innerHTML += `<img src="public/images/mashPotatoes.jpg"/>`;
+//       });
+//     });
+//   });
 // });
+
+// ****************** Iteration 3 using async and await ******************
+
+// brusselSprouts.forEach(eachStep => {
+//   async function mealprep(step) {
+//     await addFood(step, '#brusselSprouts');
+//     if (brusselSprouts.indexOf(step) === brusselSprouts.length - 1) {
+//       document.querySelector('#table').innerHTML += `<img src="public/images/brusselSprouts.jpg"/>`;
+//     }
+//   }
+//   mealprep(eachStep);
+// });
+
+// ******************************************************************************************************
+
+// 🚨🚨🚨 comment out previous iterations for solutions below:
 
 // SOLUTION 1:
 async function makeFood(steps, id) {
