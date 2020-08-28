@@ -32,6 +32,7 @@
     {{#each beers}}
         <div class="beer">
             <li>
+                {{!-- "this" refers to the CURRENT beer in each loop --}}
                 {{> beerpartial this }}
             </li>
         </div>

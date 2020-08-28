@@ -26,7 +26,7 @@ app.get('/', (req, res) => res.render('index'));
 app.get('/beers', (req, res, next) => {
   punkAPI
     .getBeers() // .getBeers() is the method provided by punkAPI
-    .then(responseFromDB => {
+    .then((responseFromDB) => {
       // console.log("Response is:",  responseFromDB);
       // beers is the hbs file that's gonna be rendered, it comes from "views" folder
       //  ^
@@ -34,7 +34,7 @@ app.get('/beers', (req, res, next) => {
       //                  |             |
       res.render('beers/beers.hbs', { beers: responseFromDB });
     })
-    .catch(error => console.log(error));
+    .catch((error) => console.log(error));
 });
 
 // **********************************************************************
@@ -44,15 +44,15 @@ app.get('/beers', (req, res, next) => {
 app.get('/random-beer', (req, res, next) => {
   punkAPI
     .getRandom() // .getRandom() is the method provided by punkAPI
-    .then(responseFromApi => {
-      res.render('beers/random-beer', { beers: responseFromApi });
+    .then((responseFromApi) => {
+      res.render('beers/random-beer.hbs', { beers: responseFromApi });
 
       // other way could be extracting this one beers from the array and
       // sending it as object to the random-beers view
       // but in that case we wouldn't be able to use partial, and we are aiming to use it later
       // res.render('beers/random-beer', { beer: responseFromApi[0] });
     })
-    .catch(error => console.log(error));
+    .catch((error) => console.log(error));
 });
 
 // **********************************************************************
@@ -63,11 +63,11 @@ app.get('/beers/:beerId', (req, res) => {
 
   punkAPI
     .getBeer(req.params.beerId)
-    .then(responseFromApi => {
+    .then((responseFromApi) => {
       //   console.log(responseFromApi);
       res.render('beers/beer-details.hbs', { beers: responseFromApi });
     })
-    .catch(err => console.log(err));
+    .catch((err) => console.log(err));
 });
 
 app.listen(3000, () => console.log('🏃‍ on port 3000'));
