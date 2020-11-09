@@ -26,16 +26,13 @@
 
 // ****************** Iteration 2 using `.then()` ******************
 
-// addFood(mashPotatoes[0], '#mashPotatoes').then(() => {
-//   addFood(mashPotatoes[1], '#mashPotatoes').then(() => {
-//     addFood(mashPotatoes[2], '#mashPotatoes').then(() => {
-//       addFood(mashPotatoes[3], '#mashPotatoes').then(() => {
-//         addFood(mashPotatoes[4], '#mashPotatoes');
-//         document.querySelector('#table').innerHTML += `<img src="public/images/mashPotatoes.jpg"/>`;
-//       });
-//     });
-//   });
-// });
+// addFood(mashPotatoes[0], '#mashPotatoes')
+//  .then(() => addFood(mashPotatoes[1], '#mashPotatoes'))
+//  .then(() => addFood(mashPotatoes[2], '#mashPotatoes'))
+//  .then(() => addFood(mashPotatoes[3], '#mashPotatoes'))
+//  .then(() => addFood(mashPotatoes[4], '#mashPotatoes'))
+//  .then(() => document.querySelector('#table').innerHTML += `<img src="public/images/mashPotatoes.jpg"/>`);
+
 
 // ****************** Iteration 3 using async and await ******************
 
