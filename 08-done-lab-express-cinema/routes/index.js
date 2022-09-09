@@ -1,6 +1,6 @@
 const express = require('express');
 const router  = express.Router();
-const Movie   = require('../models/Movie');
+const Movie   = require('../models/Movie.model');
 
 /* GET home page */
 // "/" => means "localhost:3000/" -> this is the root where our app is running
