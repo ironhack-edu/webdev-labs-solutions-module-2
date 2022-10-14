@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 
 // Import of the model Recipe from './models/Recipe.model.js'
 const Recipe = require('./models/Recipe.model');
-// Import of the data from './data.json'
+// Import of the data from the file './data.json'
 const data = require('./data');
 
 const MONGODB_URI = 'mongodb://localhost:27017/recipe-app';
@@ -16,15 +16,16 @@ mongoose
     return Recipe.deleteMany()
   })
   .then(() => {
+    console.log("All existing recipes deleted from the DB!!!")
     // Run your code here, after you have insured that the connection was made
     // iteration 2
 
-    let newRecipe = {
-      title: 'miXto quente',
+    const newRecipe = {
+      title: 'Mixto quente',
       level: 'Easy Peasy',
       ingredients: ['pão francês', 'queijo', 'presunto'],
       cuisine: 'Brasileira',
-      dishType: 'Snack',
+      dishType: 'snack',
       image:
         'http://culinaria.culturamix.com/blog/wp-content/gallery/misto-quente-3/Misto-Quente-6.jpg',
       duration: 5,
@@ -32,29 +33,24 @@ mongoose
     };
 
 
-    return Recipe.create(newRecipe)
+    return Recipe.create(newRecipe);
   })
-  .then(result => console.log(`recipe added: ${result.title}`))
+  .then(result => console.log(`Recipe created: ${result}`))
   .then(() => Recipe.insertMany(data))
   .then(result => {
-    result.forEach(item => {
-        console.log(`recipe for ${item.title} inserted successfully`);
-      })
-      return Recipe.findOneAndUpdate({ title: 'Rigatoni alla Genovese' }, { duration: 100 }, {new: true})
+    // console.log(`Created recipes:`, result);
+    console.log(`Created ${result.length} recipes`);
+    return Recipe.findOneAndUpdate({ title: 'Rigatoni alla Genovese' }, { duration: 100 }, { new: true })
   })
   .then(result => {
-    console.log(`Updated ${result.title} and new duration is: ${result.duration}`)
+    console.log(`Updated ${result.title} and new duration is: ${result.duration}`);
 
     return Recipe.deleteOne({ title: 'Carrot Cake' })
   })
-  .then(() => {
-    console.log(`The recipe is deleted`)
-    return Recipe.deleteOne({ title: 'Orange and Milk-Braised Pork Carnitas' })
-  })
-  .then(() => {
-    console.log(`The recipe is deleted`)
+  .then((result) => {
+    console.log("The recipe was deleted", result);
   })
   .catch(error => {
-    console.error('Error: ', error);
+    console.error("Error: ", error);
   })
   .finally(() => mongoose.connection.close())

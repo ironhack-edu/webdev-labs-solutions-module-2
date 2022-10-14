@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const { Schema, model } = mongoose;
 
-// iteration 1
+// Iteration 1
 
 const recipeSchema = new Schema({
   title: { type: String, required: true, unique: true },
@@ -13,7 +13,8 @@ const recipeSchema = new Schema({
   cuisine: { type: String, required: true },
   dishType: {
     type: String,
-    enum: ['Breakfast', 'Dish', 'Snack', 'Drink', 'Dessert', 'Other']
+    enum: ['breakfast', 'main_course', 'soup', 'snack', 'drink', 'dessert', 'other']
+
   },
   image: {
     type: String,
