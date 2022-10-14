@@ -1,18 +1,32 @@
-<form action="/movies" method="POST">
-  <label for="">Title:</label>
-  <input type="text" name="title" id="">
-  <label for="">Genre:</label>
-  <input type="text" name="genre" id="">
-  <label for="">Plot:</label>
-  <input type="text" name="plot" id="">
-  
-  {{!-- array of celebrities in the cast --}}
-  <label for="">Cast:</label>
-  <select name="cast" multiple>
-    {{#each celebritiesFromDB}}
-      <option value="{{this._id}}">{{this.name}}</option>
-    {{/each}}
-  </select>
+<h2>Add a new movie</h2>
 
-  <button type="submit">Create movie</button>
+ <form action="/movies/create" method="POST">
+  
+    <p>   
+        <label>Title:</label>
+        <input type="text" name="title" />
+    </p>
+
+    <p>
+        <label>Genre:</label>
+        <input type="text" name="genre" /> 
+    </p>
+
+  <p>
+        <label>Plot:</label>
+        <input type="text" name="plot" />
+  </p>
+
+  <p>
+       
+        <label for="">Cast:</label>
+        <select name="cast" multiple>
+            {{#each celebsList}}
+            <option value="{{this._id}}">{{this.name}}</option>
+            {{/each}}
+        </select>
+    
+  </p>
+  
+  <button type="submit">Add movie</button>
 </form>

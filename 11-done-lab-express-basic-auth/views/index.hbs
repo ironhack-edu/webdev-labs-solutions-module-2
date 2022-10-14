@@ -1,0 +1,23 @@
+<h1>{{title}} 🚀</h1>
+<p>Welcome Ironhacker!</p>
+
+<div id="container">
+  {{#if userIsLoggedIn}}
+    <a href="/secret">
+      <button>Protected page (requires authentication!)</button>
+    </a>
+
+    <a href="/logout">
+      <button>Logout</button>
+    </a>
+  {{else}}
+    <a href="/signup">
+      <button>Sign up</button>
+    </a>
+
+    <a href="/login">
+      <button>Login</button>
+    </a>
+  {{/if}}
+
+</div>

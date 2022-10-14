@@ -1,35 +1,54 @@
 const mongoose = require('mongoose');
 const Recipe = require('./models/Recipe.model'); // Import of the model Recipe from './models/Recipe.model.js'
-const data = require('./data.js'); // Import of the data from './data.js'
+const data = require('./data'); // Import of the data from './data.json'
+
+const MONGODB_URI = 'mongodb://localhost:27017/recipe-app';
 
 const franklesRecipe = {
   title: 'Pesto di Frankles',
   level: 'Easy Peasy',
   ingredients: ['Pasta', 'Pesto', 'Love'],
   cuisine: 'Ironhack',
-  dishType: 'Dish',
+  dishType: 'main_course',
   duration: 0,
   creator: 'Franckles'
 };
 
-async function createRecipes(cb) {
+async function createRecipes() {
   try {
-    const x = await mongoose.connect('mongodb://localhost/recipe-app-dev', {
-      useCreateIndex: true,
-      useNewUrlParser: true,
-      useUnifiedTopology: true
-    });
-    console.log('Promise 1');
-    const recipe = await Recipe.create(franklesRecipe).catch(err => console.log(err));
-    // console.log(recipe, "this is recipe");
-    console.log('Promise 2');
-    const recipes = await Recipe.insertMany(data).catch(err => console.log(err));
-    console.log('Promise 3');
-    const updatedRecipe = await Recipe.updateOne({ title: 'feahiufea' }, { duration: 100 }, { new: true });
-    console.log('Promise 4');
+    const x = await mongoose.connect(MONGODB_URI);
+    console.log('\nPromise 1');
+    console.log(`Connected to the database: "${x.connection.name}"`);
+    
+    // Before adding any recipes to the database, let's remove all existing ones
+    await Recipe.deleteMany();
+    console.log('\nPromise 2');
+    console.log("All existing recipes deleted from the DB!!!")
+
+    const oneRecipe = await Recipe.create(franklesRecipe);
+    console.log('\nPromise 3');
+    console.log(`Recipe created: ${oneRecipe.title}`)    
+
+    const recipes = await Recipe.insertMany(data);
+    console.log('\nPromise 4');
+    console.log(`Created ${recipes.length} recipes`);    
+
+    const updatedRecipe = await Recipe.updateOne({ title: 'Rigatoni alla Genovese' }, { duration: 100 }, { new: true });
+    console.log('\nPromise 5');
+    console.log(`Updated ${updatedRecipe.title} and new duration is: ${updatedRecipe.duration}`);    
+
+    const result = await Recipe.deleteOne({ title: 'Carrot Cake' });
+    console.log('\nPromise 6');    
+    console.log(`The recipe was deleted:`, result);
+
+
     await mongoose.connection.close();
-    console.log('Promise 5');
+    console.log('\nPromise 7');
+    console.log('Database connection closed.')
+
   } catch (err) {
     console.log(err);
   }
 }
+
+createRecipes();

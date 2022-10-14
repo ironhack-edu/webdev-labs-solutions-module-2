@@ -1,17 +1,19 @@
-<h2>{{theMovie.title}}</h2>
-<h3>Genre: {{theMovie.genre}}</h3>
-<p>Plot: {{theMovie.plot}}</p>
-<ul>
-  {{#each theMovie.cast}}
-    <li> {{ this.name }} </li>
-  {{/each }}
-</ul>
+<h2>Movie Details</h2>
 
-{{!-- if you want to have delete button on the details page, this is the way: --}}
-{{!-- <form action="/movies/{{theMovie._id}}/delete" method="POST">
-  <button type="submit">Delete</button>
-</form> --}}
+<div>
+        <p>Title: {{foundMovie.title}}</p>
+        <p>Genre: {{foundMovie.genre}} </p>
+        <p>Plot: {{foundMovie.plot}} </p>
+    Cast: 
+    <ul>
+    {{#each foundMovie.cast}}
+      <li>Name: {{this.name}}</li>
+      <li>Occupation: {{this.occupation}}</li>
+      <li>Catch Phrase: {{this.catchPhrase}}</li>
+        <br>
+    {{/each}}
 
-<a href="/movies/{{theMovie._id}}/edit">Edit the Movie</a>
+    </ul>
+    
+</div>
 
-<a href="/movies">Back to movies list</a>

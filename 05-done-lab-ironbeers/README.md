@@ -4,11 +4,11 @@
 
 ## Introduction
 
-Sometimes you would just like to have a very descriptive list of all beers so you could see its type, color, the percentage of alcohol, or which beer is well pared with some food. Well, in this lab, you will create a web app where the user will be able to see a list of beers, get random suggestions, and read a very descriptive explanation of each beer.
+Sometimes you would just like to have a very descriptive list of all beers so you could see their type, color, each beer's percentage of alcohol, or which beer is well pared with some food. In this lab, you will create a web app where the user will be able to see a list of beers, get random suggestions, and read a very descriptive explanation of each beer.
 
 "How will we get all of this information?", you might ask. Well, we will be using an npm package :package: as our data source.
 
-For the exercise, we will work with the **[PunkAPI](https://www.npmjs.com/package/punkapi-javascript-wrapper)** npm package. In the background, the package communicates with a remote _database_ that contains all of the beers. The package enables us to use its methods that can help us to retrieve beers. Each beer has some properties, and we can play around with this data practicing `hbs` and `partials`.
+For this exercise, we will work with the **[PunkAPI](https://www.npmjs.com/package/punkapi-javascript-wrapper)** npm package. In the background, the package communicates with a remote _database_ that contains all of the beers. The package enables us to use its methods that can help us to retrieve beers. Each beer has some properties, and we can play around with this data to practice working with Handlebars templates, `layouts` and `partials`.
 
 **In this lab, we can also practice reading external (PunkAPI) docs and learn how to get what we need from the database.**
 
@@ -33,7 +33,7 @@ $ git push origin master
 
 ### Iteration 0: Initial setup
 
-To run our application, the first thing you have to do is to install its dependencies. After changing directories to **`starter-code`**, run the following command:
+To run our application, the first thing you have to do is to install all of its dependencies. Run the following command:
 
 ```shell
 $ npm install
@@ -49,29 +49,30 @@ $ node app.js
 
 ### Iteration 1: Layout barebones
 
-Our starter code brings the basic configuration to run our app. The **`/`** route is set to render the `index.hbs` file. Let's start with creating a layout.
+Our starter code includes the basic configuration needed to run our app. The **`/`** route is set to render the `index.hbs` file. Let's start by creating a layout.
 
-Inside the `views` folder, create a `layout.hbs` file. In the bonus iteration, you can give your app some style, but for now, let's focus on the logic.
+Inside of the `views` folder, create a `layout.hbs` file. In the bonus iteration, you can give your app some style, but for now, let's focus on the logic.
 
 Remember to add the `{{{ body }}}` to the **main layout**.
+
 Add a navbar that includes links to 3 pages:
 
 - _Home_ ==> should navigate to `/`.
 - _Beers_ ==> should navigate to `/beers`.
-- _Random Beer_ ==> should navigate to `/random-beers`.
+- _Random Beer_ ==> should navigate to `/random-beer`.
 
 Layout done, let's move to creating these three pages.
 
 ### Iteration 2 - Home _page_
 
 - The first page should be **Home** and should be rendered on **`/`**. The file that gets rendered is `index.hbs`.
-- This file should include the _beer image_, which you can find at `/public/images`. Together with the image, `index.hbs` should have two buttons: `Check the Beers!` and `Check a Random Beer`. Both buttons should navigate to the corresponding routes (which we previously defined in our nav bar as well).
+- This file should include the _beer image_, which you can find at `/public/images`. Together with the image, `index.hbs` should have two links: `Check the Beers!` and `Check a Random Beer`. Both links should navigate to the corresponding routes (which we previously defined in our navbar as well). Later, you can style these `a` tags to make them look like buttons.
 
 ![image](https://user-images.githubusercontent.com/23629340/36723774-7d791ef2-1bb1-11e8-991b-39dbf4fd8a59.png)
 
 ### Iteration 3 - Beers _page_
 
-The next thing we will be working on is a page where we can present all the beers we will retrieve from the remote database (_remote database_ is some distant database that allows access to the PunkAPI npm package). This page will be rendered every time the user visits the the `/beers` route.
+The next thing we will be working on is a page where we can present all the beers we will retrieve from the remote database. This page will be rendered every time the user visits the the `/beers` route.
 
 This leads us to the conclusion that in this step, we have the two main focus areas:
 
@@ -83,10 +84,10 @@ This leads us to the conclusion that in this step, we have the two main focus ar
 In this step, we will have a couple of micro-steps:
 
 - Create a `/beers` route inside the `app.js` file.
-- Inside the `/beers` route, call the `getBeers()` method (the **PunkAPI** provides this method, and you can find more about it [here](https://www.npmjs.com/package/punkapi-javascript-wrapper#getbeersoptions)). **The response from calling the `.getBeers()` method will be an array of 25 beers**.
+- Inside the `/beers` route, call the `getBeers()` method (the **PunkAPI** provides this method, and you can find more about it [here](https://www.npmjs.com/package/punkapi-javascript-wrapper#getbeersoptions)). **Calling the `.getBeers()` method returns a promise that should be resolved with an array of 25 beers**.
 - Down the road, you should pass that array to the `beers.hbs` view.
 
-  The example of how this method works is shown below:
+The example of how this method works is shown below:
 
 ```js
 punkAPI
@@ -98,14 +99,14 @@ punkAPI
 #### 3.2 The `beers.hbs` view
 
 - Create a `beers.hbs` file to render every time we call this route.
-- This file should have access to the beers we get as a response from the database. Remember, you should call the `render` method after getting the _beers_ array. _Hint:_ That means inside the `then`. :wink:
-- On the `beers.hbs` view, loop over the **beers array** using the `{{#each}}` loop. Display an **image**, **name**, **description** and **tagline**.
+- This file should have access to the beers we get as a response from the database. Remember, you should call the `render` method after getting the _beers_ array. _Hint:_ That means inside of the function you're passing to the `then` method. :wink:
+- On the `beers.hbs` view, loop over the **array of beers** using an `{{#each}}` loop. Display an **image**, **name**, **description** and **tagline**.
 
-Now, when you click on the `Beers` on the top navigation or on the `Check the beers` button, you should be able to see all the beers. Boom! :boom:
+Now, when you click on the `Beers` link on the top navigation or on the `Check the beers` button, you should be able to see all the beers. Boom! :boom:
 
 ### Iteration 4 - Random beer _page_
 
-The same as in the previous step, we will have to focus on creating the route to get the random beer. When a random beer is retrieved, we have to pass it to the view.
+As in the previous step, we will have to focus on creating a route to display a random beer. When a random beer is retrieved, we have to pass it to the view.
 
 #### 4.1 The `/random-beer` route
 
@@ -131,11 +132,11 @@ punkAPI
 
 ![image](https://user-images.githubusercontent.com/23629340/36724536-c5924892-1bb3-11e8-8f22-fd1f8ce316af.png)
 
-Now, every time the user clicks on the _Random beer_ in the navbar or on the _Check a random beer_ button on the home page, they should see this page with a new, random beer.
+Now, every time the user clicks on the _Random beer_ link in the navbar or on the _Check a random beer_ button on the home page, they should see this page with a new, random beer.
 
-**You just finished all the mandatory iterations. Good job!**
+**You've just finished all the mandatory iterations. Good job!**
 
-Let's proceed to the bonus part.
+Let's proceed to the bonus iterations.
 
 :::info
 On every iteration, you should render a `partial` passing the information regarding the corresponding beer.
@@ -174,7 +175,7 @@ After creating the partial, and looping over the array of beers, on our `/beers`
 
 ![image](https://user-images.githubusercontent.com/23629340/36724392-61fa7336-1bb3-11e8-8468-189908167e10.png)
 
-- Also, you can use it in the `random-beers.hbs` page.
+- Also, you can use it in the `random-beer.hbs` page.
 
 Our code shrunk by a lot just because we managed to create a reusable piece of code (the partial), which we can now place wherever we need to use this set of properties.
 
@@ -200,4 +201,4 @@ You will find the `colors` and `fonts` on the `css` file. Remember to link the `
 
 Let your artsy side shine! :sparkles:
 
-Happy Coding! :heart:
+Happy Coding! 💙
