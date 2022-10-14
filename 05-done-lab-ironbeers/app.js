@@ -9,18 +9,19 @@ const punkAPI = new PunkAPIWrapper();
 app.set('view engine', 'hbs');
 app.set('views', path.join(__dirname, 'views'));
 
-// ********* TO USE PARTIALS, WE HAVE TO REGISTER THEM: *********
+// ********* TO USE PARTIALS, WE HAVE TO REGISTER THEM FIRST: *********
 hbs.registerPartials(path.join(__dirname, 'views/partials'));
 
+// ********* STATIC FILES ARE SERVED AUTOMATICALLY FROM THE 'public/' FOLDER:" *********
 app.use(express.static(path.join(__dirname, 'public')));
 
-// add the partials here:
-
-// add the routes here:
-app.get('/', (req, res) => res.render('index'));
+// Add the routes here:
+app.get('/', (req, res) => {
+  res.render('index');
+});
 
 // **********************************************************************
-// ROUTE FOR GETTING ALL THE BEERS AND IT'S RENDERED ON "/BEERS"
+// ROUTE FOR GETTING ALL THE BEERS AND IT'S RENDERED ON "/beers"
 // **********************************************************************
 
 app.get('/beers', (req, res, next) => {
@@ -28,7 +29,7 @@ app.get('/beers', (req, res, next) => {
     .getBeers() // .getBeers() is the method provided by punkAPI
     .then((responseFromDB) => {
       // console.log("Response is:",  responseFromDB);
-      // beers is the hbs file that's gonna be rendered, it comes from "views" folder
+      // beers is the hbs file that's gonna be rendered, it comes from "views/beers/" folder
       //  ^
       //  |-------------- |          "beers" is the name of a variable we will use in hbs file
       //                  |             |
@@ -38,7 +39,7 @@ app.get('/beers', (req, res, next) => {
 });
 
 // **********************************************************************
-// ROUTE FOR GETTING A RANDOM BEER AND IT'S RENDERED ON "/RANDOM-BEER"
+// ROUTE FOR GETTING A RANDOM BEER AND IT'S RENDERED ON "/random-beer"
 // **********************************************************************
 
 app.get('/random-beer', (req, res, next) => {
@@ -56,7 +57,7 @@ app.get('/random-beer', (req, res, next) => {
 });
 
 // **********************************************************************
-// ROUTE FOR GETTING DETAILS OF A SPECIFIC BEER AND IT'S RENDERED ON "/BEERS/someBeerIdGoesHere"
+// ROUTE FOR GETTING DETAILS OF A SPECIFIC BEER AND IT'S RENDERED ON "/beers/someBeerIdGoesHere"
 // **********************************************************************
 app.get('/beers/:beerId', (req, res) => {
   // console.log('params:', req.params);

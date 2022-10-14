@@ -1,16 +1,19 @@
 {
-  "name": "starter_code",
+  "name": "lab-ironbeers",
   "version": "2.0.0",
   "main": "app.js",
   "scripts": {
-    "start": "node app.js"
+    "start": "node app.js",
+    "dev": "nodemon app.js"
+
   },
-  "author": "",
   "license": "ISC",
   "dependencies": {
     "express": "^4.17.1",
-    "hbs": "^4.0.6",
-    "path": "^0.12.7",
+    "hbs": "^4.1.1",
     "punkapi-javascript-wrapper": "^1.0.2"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.20"
   }
 }
