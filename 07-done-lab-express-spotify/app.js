@@ -27,7 +27,7 @@ const spotifyApi = new SpotifyWebApi({
 spotifyApi
   .clientCredentialsGrant()
   .then(data => spotifyApi.setAccessToken(data.body['access_token']))
-  .catch(error => console.log('Something went wrong when retrieving an access token', error));
+  .catch(error => console.log('Something went wrong  retrieving the access token', error));
 
 const app = express();
 
@@ -42,7 +42,9 @@ app.use(express.static(__dirname + '/public'));
 // ROUTE 1: DISPLAY THE FORM TO USERS SO THEY CAN SEARCH FOR THE ARTISTS
 
 // http://localhost:3000/
-app.get('/', (req, res) => res.render('home'));
+app.get('/', (req, res) => {
+  res.render('index');
+});
 // ***********************************************************************************************************
 
 // ROUTE 2: SUBMIT THE FORM
@@ -68,12 +70,12 @@ app.get('/artist-search', (req, res) => {
 // ROUTE 3: THE DETAILS OF A SPECIFIC ARTIST BASED ON THE UNIQUE ID (WHICH GETS CAPTURED FROM THE URL)
 // http://localhost:3000/albums/123eER56-8Ig009lhY
 
-//                theId => this is placeholder, can be any word,
+//                artistId => this is placeholder, can be any word,
 //                  |      just make sure you use the same word in "req.params.______"
-app.get('/albums/:theId', (req, res) => {
-  // console.log("Id is: ", req.params.theId);
+app.get('/albums/:artistId', (req, res) => {
+  // console.log("Id is: ", req.params.artistId);
   spotifyApi
-    .getArtistAlbums(req.params.theId)
+    .getArtistAlbums(req.params.artistId)
     .then(data => {
       // console.log('The received data from the API: ', data.body.items);
       // ----> 'HERE WHAT WE WANT TO DO AFTER RECEIVING THE DATA FROM THE API'
@@ -83,10 +85,15 @@ app.get('/albums/:theId', (req, res) => {
 });
 
 // ***********************************************************************************************************
+
+// ROUTE 4: THE DETAILS OF A SPECIFIC TRACK BASED ON THE UNIQUE ID (WHICH GETS CAPTURED FROM THE URL)
 // http://localhost:3000/tracks/aaarr554-oeRtRpu7814r
-app.get('/tracks/:someId', (req, res) => {
+
+//                trackId => this is placeholder, can be any word,
+//                  |      just make sure you use the same word in "req.params.______"
+app.get('/tracks/:trackId', (req, res) => {
   spotifyApi
-    .getAlbumTracks(req.params.someId)
+    .getAlbumTracks(req.params.trackId)
     .then(data => {
       // console.log('The received data from the API: ', data.body.items);
       res.render('tracks', { tracks: data.body.items });
