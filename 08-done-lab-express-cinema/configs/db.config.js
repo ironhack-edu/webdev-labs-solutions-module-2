@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 
 mongoose
-  .connect('mongodb://localhost/express-cinema-dev', {
+  .connect('mongodb://127.0.0.1:27017/express-cinema-dev', {
     useCreateIndex: true,
     useNewUrlParser: true,
     useUnifiedTopology: true

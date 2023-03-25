@@ -46,7 +46,7 @@ module.exports = (app) => {
   );
 
   const MONGO_URI =
-    process.env.MONGODB_URI || "mongodb://localhost/02-node-auth";
+    process.env.MONGODB_URI || "mongodb://127.0.0.1:27017/02-node-auth";
 
   // Sesssion / cookie middleware  --> req.session
   app.use(

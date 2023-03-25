@@ -15,7 +15,7 @@ const session = require('express-session');
 const passportSetup =  require('./config/passport/passport-setup');
 
 mongoose
-  .connect('mongodb://localhost/users-passport', {useNewUrlParser: true})
+  .connect('mongodb://127.0.0.1:27017/users-passport', {useNewUrlParser: true})
   .then(x => {
     console.log(`Connected to Mongo! Database name: "${x.connections[0].name}"`)
   })

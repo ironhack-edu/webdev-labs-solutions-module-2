@@ -10,7 +10,7 @@ const hbs = require('hbs');
 const app = express();
 // Mongoose configuration
 const mongoose = require("mongoose");
-mongoose.connect("mongodb://localhost/passport-local");
+mongoose.connect("mongodb://127.0.0.1:27017/passport-local");
 // passportJS
 const session       = require("express-session");
 const bcrypt        = require("bcrypt");
