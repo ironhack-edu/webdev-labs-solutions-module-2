@@ -14,7 +14,7 @@ const authController = require("./controllers/authController");
 const siteController = require("./controllers/siteController");
 
 // Mongoose configuration
-mongoose.connect("mongodb://localhost/basic-auth-mongoose");
+mongoose.connect("mongodb://127.0.0.1:27017/basic-auth-mongoose");
 
 // Middleware configuration
 app.use(logger("dev"));
